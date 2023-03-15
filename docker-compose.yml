@@ -1,0 +1,10 @@
+services:
+  app:
+    build: .
+    container_name: case-adimplere
+    ports:
+      - 8888:8888
+    environment:
+      - ENVIRONMENT=development
+    volumes:
+      - .:/app

@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "adimplere"
+version = "0.1.0"
+description = ""
+authors = ["Rafael Cunha <silici0@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+fastapi = "^0.94.1"
+uvicorn = "^0.21.0"
+fastapi-utils = "^0.2.1"
+python-dotenv = "^1.0.0"
+
+[tool.poetry.dev-dependencies]
+fastapi-route-logger-middleware = "^0.2.3"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
