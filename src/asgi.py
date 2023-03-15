@@ -1,20 +1,22 @@
 import logging
 
-from fastapi import FastAPI, APIRouter, status, Request
+from fastapi import FastAPI, Request
 from src import config
 from starlette.middleware.cors import CORSMiddleware
 from src.games.entrypoints.api import router as games_router
 from fastapi.exceptions import RequestValidationError
 from src.games.exceptions import validation_exception_handler
 import time
-from fastapi_utils.timing import add_timing_middleware, record_timing
+from fastapi_utils.timing import add_timing_middleware
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+
 def create_app(debug: bool = False) -> FastAPI:
     app = FastAPI(title=config.get_app_name(), debug=debug)
-    add_timing_middleware(app, record=logger.info, prefix="app", exclude="untimed")
+    add_timing_middleware(app, record=logger.info, prefix="app",
+                          exclude="untimed")
 
     @app.middleware("http")
     async def add_process_time_header(request: Request, call_next):

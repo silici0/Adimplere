@@ -1,5 +1,6 @@
 from uuid import uuid4
 
+
 class Games:
     uuid: str
     title: str

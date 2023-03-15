@@ -1,9 +1,12 @@
 from fastapi import APIRouter
 from src.games.entrypoints.schemas import output
 from src.games import service
-from typing import List, Any
+from typing import List
+from fastapi import HTTPException
+
 
 router = APIRouter()
+
 
 @router.get(
     "/games",
@@ -12,6 +15,7 @@ router = APIRouter()
 )
 def game_short_description() -> List[output.GameShortDescription]:
     return service.short_description()
+
 
 @router.get(
     "/games/{name}",
